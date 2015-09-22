@@ -39,39 +39,36 @@ public class MainActivity extends Activity {
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
-        // as you specify a parent activity in AndroidManifest.xml.
         int id = item.getItemId();
-
         //noinspection SimplifiableIfStatement
         if (id == R.id.action_settings) {
             return true;
         }
-
         return super.onOptionsItemSelected(item);
     }
 
+    // This method is called when a buttonis pressed
         public void click1(View view) throws IOException {
             TableLayout table = (TableLayout) findViewById(R.id.myTableLayout);
             appContext = getBaseContext();
             //To retrieve .json file from assets folder
             GetAssets getFile = new GetAssets(appContext);
             String bufferString = getFile.getFileAssets();
+            //Create insttance of GetJson: in method getIt() we can parse the json string
             final GetJson getJson1 = new GetJson(bufferString);
             //create list of Arraylists where each arraylist contain onr column
             List<ArrayList<String>> ab;
             try {
-                ab = getJson1.getIt(); // get the List of ArrayLists
-                int size = ab.get(0).size();
-                int nCol = ab.size();
+                ab = getJson1.getIt(); // get the List of ArrayLists i.e. whole table
+                int size = ab.get(0).size(); // get rowcount
+                int nCol = ab.size(); // get column count
                 for (i = 0; i < size; i++) {
                     TableRow row = new TableRow(this);
                     row.setClickable(true);
                     String[] debt = new String[nCol];
                     for(int j =0;j<nCol ; j++){
                         TextView[] text = new TextView[size];
-                        debt[j] = ab.get(j).get(i);
+                        debt[j] = ab.get(j).get(i); // set row wise
                         text[j] = new TextView(MainActivity.this);
                         text[j].setText(debt[j]);
                         text[j].setPadding(20, 10, 10, 10);
