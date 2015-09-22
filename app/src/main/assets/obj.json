@@ -1,0 +1,218 @@
+{
+  "formules": [
+    {
+      "formule": "Linear",
+      "abc": "Motion",
+      "id" : "1",
+      "url": "qp1"
+    },
+    {
+      "formule": "Constant",
+      "abc": "Motion",
+      "id" : "2",
+      "url": "qp2"
+    },
+    {
+      "formule": "Projectile",
+      "abc": "Motion",
+      "id" : "3",
+      "url": "qp3"
+    },
+    {
+      "formule": "Force",
+      "abc": "Motion",
+      "id" : "4",
+      "url": "qp4"
+    },
+    {
+      "formule": "Work",
+      "abc": "Motion",
+      "id" : "5",
+      "url": "qp5"
+    },
+    {
+      "formule": "Rotary",
+      "abc": "Motion",
+      "id" : "6",
+      "url": "qp6"
+    },
+    {
+      "formule": "Harmonic" ,
+      "abc": "Motion",
+      "id" : "7",
+      "url": "qp7"
+    },
+    {
+      "formule": "Gravity",
+      "abc": "Motion",
+      "id" : "8",
+      "url": "qp8"
+    },
+    {
+      "formule": "Lateral",
+      "abc": "Motion","url": "qp1","id" : "9",
+      "url": "qp9"
+    },
+    {
+      "formule": "Sound",
+      "abc": "Motion","id" : "10",
+      "url": "qp1",
+      "url": "qp10"
+    },
+    {
+      "formule": "Electrostatics",
+      "abc": "Motion",
+      "url": "qp1","id" : "11",
+      "url": "qp11"
+    },
+    {
+      "formule": "Direct",
+      "abc": "Motion","id" : "12",
+      "url": "qp12"
+    },
+    {
+      "formule": "Magnetic","id" : "13",
+      "abc": "Motion",
+      "url": "qp13"
+
+    },
+    {
+      "formule": "Alternatingt","id" : "14",
+      "abc": "Motion",
+      "url": "qp14"
+    },
+    {
+      "formule": "Thermodynamics",
+      "abc": "Motion","id" : "15",
+      "url": "qp15"
+    },
+    {
+      "formule": "Hydrogen",
+      "abc": "Motion","id" : "16",
+      "url": "qp16"
+    },
+    {
+      "formule": "Optics",
+      "abc": "Motion","id" : "17",
+      "url": "qp17"
+    },
+    {
+      "formule": "Moderns","id" : "18",
+      "abc": "Motion",
+      "url": "qp18"
+    },
+    {
+      "formule": "Hydrostatics","id" : "19",
+      "abc": "Motion",
+      "url": "qp19"
+    },
+    {
+      "formule": "Astronomy","id" : "20",
+      "abc": "Motion",
+      "url": "qp20"
+    },
+    {
+      "formule": "Linear",
+      "abc": "Motion","id" : "21",
+      "url": "qp1"
+    },
+    {
+      "formule": "Constant","id" : "22",
+      "abc": "Motion",
+      "url": "qp2"
+    },
+    {
+      "formule": "Projectile",
+      "abc": "Motion","id" : "23",
+      "url": "qp3"
+    },
+    {
+      "formule": "Force","id" : "24",
+      "abc": "Motion",
+      "url": "qp4"
+    },
+    {
+      "formule": "Work","id" : "25",
+      "abc": "Motion",
+      "url": "qp5"
+    },
+    {
+      "formule": "Rotary","id" : "26",
+      "abc": "Motion",
+      "url": "qp6"
+    },
+    {
+      "formule": "Harmonic" ,"id" : "27",
+      "abc": "Motion",
+      "url": "qp7"
+    },
+    {
+      "formule": "Gravity","id" : "28",
+      "abc": "Motion",
+      "url": "qp8"
+    },
+    {
+      "formule": "Lateral",
+      "abc": "Motion","url": "qp1","id" : "29",
+      "url": "qp9"
+    },
+    {
+      "formule": "Sound","id" : "30",
+      "abc": "Motion",
+      "url": "qp1",
+      "url": "qp10"
+    },
+    {
+      "formule": "Electrostatics","id" : "31",
+      "abc": "Motion",
+      "url": "qp1",
+      "url": "qp11"
+    },
+    {
+      "formule": "Direct",
+      "abc": "Motion","id" : "32",
+      "url": "qp12"
+    },
+    {
+      "formule": "Magnetic",
+      "abc": "Motion","id" : "33",
+      "url": "qp13"
+
+    },
+    {
+      "formule": "Alternatingt",
+      "abc": "Motion","id" : "34",
+      "url": "qp14"
+    },
+    {
+      "formule": "Thermodynamics",
+      "abc": "Motion","id" : "35",
+      "url": "qp15"
+    },
+    {
+      "formule": "Hydrogen",
+      "abc": "Motion","id" : "36",
+      "url": "qp16"
+    },
+    {
+      "formule": "Optics",
+      "abc": "Motion","id" : "37",
+      "url": "qp17"
+    },
+    {
+      "formule": "Moderns",
+      "abc": "Motion","id" : "38",
+      "url": "qp18"
+    },
+    {
+      "formule": "Hydrostatics",
+      "abc": "Motion","id" : "39",
+      "url": "qp19"
+    },
+    {
+      "formule": "Astronomy",
+      "abc": "Motion","id" : "40",
+      "url": "qp20"
+    }
+  ]
+}
