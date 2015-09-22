@@ -16,6 +16,7 @@ import java.util.List;
 public class GetJson {
     String json;
     String data = "";
+    int countt;
     ArrayList<String> frmula = new ArrayList<>();
     ArrayList<String> urrl = new ArrayList<>();
     ArrayList<String> ab = new ArrayList<>();
@@ -47,10 +48,6 @@ public class GetJson {
         ab11.add(frmula);
         ab11.add(ab);
         ab11.add(ab1);
-        ab11.add(urrl);
-        ab11.add(frmula);
-        ab11.add(ab);
-        ab11.add(ab1);
         return ab11;
     }
 
@@ -64,8 +61,14 @@ public class GetJson {
         }
         return key;
     }
-
-    public int getCount() {
+    public int getCount(){
         return count;
+    }
+
+    public void setCountt(int countt) {
+        this.countt = countt;
+    }
+    public int getCounttt(){
+        return countt;
     }
 }
