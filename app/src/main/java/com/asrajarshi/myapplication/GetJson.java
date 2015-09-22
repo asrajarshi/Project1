@@ -38,19 +38,19 @@ public class GetJson {
             JSONObject jsonObject = jsonArray.getJSONObject(i);
             String[] value = new String[cn];
             for(int j =0;j<cn;j++)
-                value[j] = jsonObject.optString(key.get(j)).toString();
-            frmula.add((value[0]));
-            ab.add(value[1]);
-            ab1.add((value[2]));
-            urrl.add(value[3]);
+                value[j] = jsonObject.optString(key.get(j)).toString(); // to retrive elemtns in one object
+            frmula.add((value[0])); //add value to 1st column
+            ab.add(value[1]); // add value to second colum
+            ab1.add((value[2])); // add to third column
+            urrl.add(value[3]); // add to forth column
         }
-        ab11.add(urrl);
-        ab11.add(frmula);
-        ab11.add(ab);
-        ab11.add(ab1);
+        ab11.add(urrl); //add 1st column to the list
+        ab11.add(frmula); // add 2nd column to the list
+        ab11.add(ab); // add 3rd column to the list
+        ab11.add(ab1); // add 4th column to the lsit
         return ab11;
     }
-
+// This method is to iterate over keys in one json object and to return those keys
     public ArrayList<String > gotIt(JSONArray jsonArray) throws JSONException {
         JSONObject jsonObject = jsonArray.getJSONObject(1);
         Iterator iterator = jsonObject.keys();
