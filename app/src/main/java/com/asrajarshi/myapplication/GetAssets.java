@@ -17,7 +17,7 @@ public class GetAssets {
     public String getFileAssets() throws IOException {
         InputStream is = null;
         try {
-            is = appContext.getAssets().open("google.json");
+            is = appContext.getAssets().open("obj.json");
         }catch (IOException e) {
             e.printStackTrace();
         }
