@@ -1,6 +1,8 @@
 package com.asrajarshi.myapplication;
 
 import android.content.Context;
+import android.graphics.Color;
+import android.graphics.Typeface;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -72,6 +74,7 @@ public class Table extends AppCompatActivity {
                 text[i] = new TextView(Table.this);
                 text[i].setText(key1.get(i));
                 text[i].setPadding(10, 10, 10, 10);
+                text[i].setTypeface(null, Typeface.BOLD);
                 headers.addView(text[i]);
             }
             table.addView(headers);

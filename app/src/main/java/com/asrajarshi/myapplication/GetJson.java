@@ -26,9 +26,9 @@ public class GetJson {
     public List<ArrayList<String>> getIt() throws JSONException {
         JSONObject reader = new JSONObject(json);
         //Get the instance of JSONArray that contains JSONObjects
-        JSONArray jsonArray = reader.optJSONArray("formules");
+        JSONArray jsonArray = reader.optJSONArray("markers");
         //Iterate the jsonArray and print the info of JSONObjects
-       key = gotIt(jsonArray);
+        key = gotIt(jsonArray);
         int cn = getCount();
         List<ArrayList<String>> ab11 = new ArrayList<>();
         for (int i = 0; i < jsonArray.length(); i++) {
