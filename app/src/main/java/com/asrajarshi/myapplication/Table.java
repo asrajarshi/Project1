@@ -1,45 +1,39 @@
 package com.asrajarshi.myapplication;
 
-import android.app.Activity;
 import android.content.Context;
-import android.content.Intent;
+import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.Button;
 import android.widget.TableLayout;
 import android.widget.TableRow;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import org.json.JSONException;
+
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
-public class MainActivity extends Activity {
-    static int i;
+
+public class Table extends AppCompatActivity {
     Context appContext;
+    int i;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
-        Button button = (Button) findViewById(R.id.button);
-        button.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(MainActivity.this, Table.class);
-                startActivity(intent);
-                finish();
-            }
-        });
+        setContentView(R.layout.activity_table);
+        appContext = getBaseContext();
+        try {getTable(appContext);}
+        catch (IOException e) {e.printStackTrace();}
     }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.menu_main, menu);
+        getMenuInflater().inflate(R.menu.menu_table, menu);
         return true;
     }
 
@@ -57,11 +51,11 @@ public class MainActivity extends Activity {
 
         return super.onOptionsItemSelected(item);
     }
-    public void click1(View view) throws IOException {
+    public void getTable(Context context) throws IOException {
         TableLayout table = (TableLayout) findViewById(R.id.myTableLayout);
-        appContext = getBaseContext();
+        context = getBaseContext();
         //To retrieve .json file from assets folder
-        GetAssets getFile = new GetAssets(appContext);
+        GetAssets getFile = new GetAssets(context);
         String bufferString = getFile.getFileAssets();
         GetJson getJson1 = new GetJson(bufferString);
         //create list of Arraylists where each arraylist contain onr column
@@ -72,26 +66,29 @@ public class MainActivity extends Activity {
             int nRow = ab.size(); //size of row
             for (i = 0; i < nRow; i++) {
                 TableRow row = new TableRow(this);
+                //TableRow row = new TableRow(this);
                 row.setClickable(true);
+                String[] debt = new String[nCol];
                 for(int j =0;j<nCol ; j++){
                     TextView[] text = new TextView[nCol];
-                    text[j] = new TextView(MainActivity.this);
-                    text[j].setText(ab.get(i).get(j));
-                    text[j].setPadding(5, 8, 5, 5);
+                    debt[j] = ab.get(i).get(j);
+                    text[j] = new TextView(Table.this);
+                    text[j].setText(debt[j]);
+                    text[j].setPadding(10,10,10,10);
                     row.addView(text[j]);
                 }
                 table.addView(row);
                 row.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
-                        Log.d("mainacc", "hello");
+                        Log.d("mainacc", "hello rami");
                         TableRow tablerow = (TableRow) v;
                         TextView sample = (TextView) tablerow.getChildAt(0);
                         String result=sample.getText().toString();
-                        Toast.makeText(MainActivity.this,"row number "+result, Toast.LENGTH_LONG).show();
-                        }});
-                } }catch (JSONException e) {
-                e.printStackTrace();
-            }
+                        Toast.makeText(Table.this, result, Toast.LENGTH_LONG).show();
+                    }});
+            } }catch (JSONException e) {
+            e.printStackTrace();
         }
+    }
 }

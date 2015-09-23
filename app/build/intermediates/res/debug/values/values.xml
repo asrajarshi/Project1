@@ -208,6 +208,7 @@
     <!-- From: file:/C:/Users/asrajarshi/AndroidStudioProjects/Sample-master/app/src/main/res/values/strings.xml -->
     <eat-comment/>
     <string name="title_activity_main">Project</string>
+    <string name="title_activity_table">Table</string>
     <!-- From: file:/C:/Users/asrajarshi/AndroidStudioProjects/Sample-master/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/22.2.1/res/values/values.xml -->
     <eat-comment/>
     <style name="AlertDialog.AppCompat" parent="Base.AlertDialog.AppCompat"/>

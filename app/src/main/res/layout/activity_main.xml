@@ -15,7 +15,7 @@
         android:textAppearance="?android:attr/textAppearanceLarge" />
 
     <Button
-        android:id="@+id/buttonShowAnimal"
+        android:id="@+id/button"
         android:layout_marginTop="25dp"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
