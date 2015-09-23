@@ -22,7 +22,6 @@ import java.util.List;
 
 public class Table extends AppCompatActivity {
     Context appContext;
-    int i;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -69,7 +68,7 @@ public class Table extends AppCompatActivity {
             ArrayList<String> key1 = getJson1.key; // get keys contained in object
             //add headers to the table
             TableRow headers = new TableRow(this);
-            for (i = 0; i < nCol; i++) {
+            for (int i = 0; i < nCol; i++) {
                 TextView[] text = new TextView[nCol];
                 text[i] = new TextView(Table.this);
                 text[i].setText(key1.get(i));
@@ -79,7 +78,7 @@ public class Table extends AppCompatActivity {
             }
             table.addView(headers);
             //add rows to the table
-            for (i = 0; i < nRow; i++) {
+            for (int i = 0; i < nRow; i++) {
                 TableRow row = new TableRow(this);
                 row.setClickable(true);
                 for(int j =0;j<nCol ; j++){

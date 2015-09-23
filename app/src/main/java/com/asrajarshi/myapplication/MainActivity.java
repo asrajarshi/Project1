@@ -19,7 +19,6 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 public class MainActivity extends Activity {
-    static int i;
     Context appContext;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -57,41 +56,4 @@ public class MainActivity extends Activity {
 
         return super.onOptionsItemSelected(item);
     }
-    public void click1(View view) throws IOException {
-        TableLayout table = (TableLayout) findViewById(R.id.myTableLayout);
-        appContext = getBaseContext();
-        //To retrieve .json file from assets folder
-        GetAssets getFile = new GetAssets(appContext);
-        String bufferString = getFile.getFileAssets();
-        GetJson getJson1 = new GetJson(bufferString);
-        //create list of Arraylists where each arraylist contain onr column
-        List<ArrayList<String>> ab= new ArrayList<ArrayList<String>>();
-        try {
-            ab = getJson1.getIt(); // get the List of ArrayLists
-            int nCol = ab.get(0).size(); //size of column
-            int nRow = ab.size(); //size of row
-            for (i = 0; i < nRow; i++) {
-                TableRow row = new TableRow(this);
-                row.setClickable(true);
-                for(int j =0;j<nCol ; j++){
-                    TextView[] text = new TextView[nCol];
-                    text[j] = new TextView(MainActivity.this);
-                    text[j].setText(ab.get(i).get(j));
-                    text[j].setPadding(5, 8, 5, 5);
-                    row.addView(text[j]);
-                }
-                table.addView(row);
-                row.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
-                        Log.d("mainacc", "hello");
-                        TableRow tablerow = (TableRow) v;
-                        TextView sample = (TextView) tablerow.getChildAt(0);
-                        String result=sample.getText().toString();
-                        Toast.makeText(MainActivity.this,"row number "+result, Toast.LENGTH_LONG).show();
-                        }});
-                } }catch (JSONException e) {
-                e.printStackTrace();
-            }
-        }
 }
