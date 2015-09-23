@@ -44,7 +44,7 @@ public class GetJson {
     }
     // This method is to iterate over keys in one json object and to return those keys
     public ArrayList<String > gotIt(JSONArray jsonArray) throws JSONException {
-        JSONObject jsonObject = jsonArray.getJSONObject(1);
+        JSONObject jsonObject = jsonArray.getJSONObject(0);
         Iterator iterator = jsonObject.keys();
         ArrayList<String> key = new ArrayList<>();
         while (iterator.hasNext()) {

@@ -62,23 +62,23 @@ public class MainActivity extends Activity {
             int nRow = ab.size(); //size of row
             for (i = 0; i < nRow; i++) {
                 TableRow row = new TableRow(this);
-                //TableRow row = new TableRow(this);
                 row.setClickable(true);
-                String[] debt = new String[nCol];
                 for(int j =0;j<nCol ; j++){
                     TextView[] text = new TextView[nCol];
-                    debt[j] = ab.get(i).get(j);
                     text[j] = new TextView(MainActivity.this);
-                    text[j].setText(debt[j]);
-                    text[j].setPadding(5, 2, 2, 2);
+                    text[j].setText(ab.get(i).get(j));
+                    text[j].setPadding(5, 8, 5, 5);
                     row.addView(text[j]);
                 }
                 table.addView(row);
                 row.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
-                        Log.d("mainacc", "hello rami");
-                            Toast.makeText(MainActivity.this, "number is "+i,Toast.LENGTH_SHORT).show();
+                        Log.d("mainacc", "hello");
+                        TableRow tablerow = (TableRow) v;
+                        TextView sample = (TextView) tablerow.getChildAt(0);
+                        String result=sample.getText().toString();
+                        Toast.makeText(MainActivity.this,"row number "+result, Toast.LENGTH_LONG).show();
                         }});
                 } }catch (JSONException e) {
                 e.printStackTrace();
