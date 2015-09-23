@@ -21,20 +21,5 @@
         android:layout_height="wrap_content"
         android:text="click here to view table"
         />
-    <ScrollView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent">
-        <HorizontalScrollView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:fillViewport="true">
-    <TableLayout
-        android:id="@+id/myTableLayout"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_gravity="left">
-    </TableLayout>
-        </HorizontalScrollView>
-    </ScrollView>
 </LinearLayout>
 <!-- From: file:/C:/Users/asrajarshi/AndroidStudioProjects/Sample-master/app/src/main/res/layout/activity_main.xml -->
