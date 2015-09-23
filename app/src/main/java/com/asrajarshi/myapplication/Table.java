@@ -64,16 +64,25 @@ public class Table extends AppCompatActivity {
             ab = getJson1.getIt(); // get the List of ArrayLists
             int nCol = ab.get(0).size(); //size of column
             int nRow = ab.size(); //size of row
+            ArrayList<String> key1 = getJson1.key; // get keys contained in object
+            //add headers to the table
+            TableRow headers = new TableRow(this);
+            for (i = 0; i < nCol; i++) {
+                TextView[] text = new TextView[nCol];
+                text[i] = new TextView(Table.this);
+                text[i].setText(key1.get(i));
+                text[i].setPadding(10, 10, 10, 10);
+                headers.addView(text[i]);
+            }
+            table.addView(headers);
+            //add rows to the table
             for (i = 0; i < nRow; i++) {
                 TableRow row = new TableRow(this);
-                //TableRow row = new TableRow(this);
                 row.setClickable(true);
-                String[] debt = new String[nCol];
                 for(int j =0;j<nCol ; j++){
                     TextView[] text = new TextView[nCol];
-                    debt[j] = ab.get(i).get(j);
                     text[j] = new TextView(Table.this);
-                    text[j].setText(debt[j]);
+                    text[j].setText(ab.get(i).get(j));
                     text[j].setPadding(10,10,10,10);
                     row.addView(text[j]);
                 }

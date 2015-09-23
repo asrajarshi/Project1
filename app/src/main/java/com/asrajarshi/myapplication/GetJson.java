@@ -16,8 +16,8 @@ import java.util.List;
  */
 public class GetJson {
     String json;
-    List<ArrayList<String>> ab11 = new ArrayList<>();
     int count;
+    ArrayList<String> key;
 
     GetJson(String json) {
         this.json = json;
@@ -28,8 +28,9 @@ public class GetJson {
         //Get the instance of JSONArray that contains JSONObjects
         JSONArray jsonArray = reader.optJSONArray("formules");
         //Iterate the jsonArray and print the info of JSONObjects
-        ArrayList<String> key = gotIt(jsonArray);
+       key = gotIt(jsonArray);
         int cn = getCount();
+        List<ArrayList<String>> ab11 = new ArrayList<>();
         for (int i = 0; i < jsonArray.length(); i++) {
             ArrayList<String> ab1 = new ArrayList<>();
             JSONObject jsonObject = jsonArray.getJSONObject(i);
