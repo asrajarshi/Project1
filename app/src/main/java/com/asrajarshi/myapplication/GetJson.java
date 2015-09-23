@@ -26,7 +26,7 @@ public class GetJson {
     public List<ArrayList<String>> getIt() throws JSONException {
         JSONObject reader = new JSONObject(json);
         //Get the instance of JSONArray that contains JSONObjects
-        JSONArray jsonArray = reader.optJSONArray("markers");
+        JSONArray jsonArray = reader.optJSONArray("formules");
         //Iterate the jsonArray and print the info of JSONObjects
         ArrayList<String> key = gotIt(jsonArray);
         int cn = getCount();
