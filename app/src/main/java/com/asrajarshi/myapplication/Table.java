@@ -77,7 +77,7 @@ public class Table extends AppCompatActivity {
                 row = new TableRow(this);
                 row.setGravity(Gravity.LEFT);
                 row.setBackgroundColor(Color.WHITE);
-                for (int k = 1; k < nCol; k++) {// TODO need to return fixed column elements as the first element of each arraylist
+                for (int k = 1; k < nCol; k++) {// return fixed column elements as the first element of each arraylist
                     row.addView(makeTableRowWithText(TableList.get(i).get(k)));
                 }
                 scrollablePart.addView(row);
