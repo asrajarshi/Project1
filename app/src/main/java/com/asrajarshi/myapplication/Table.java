@@ -2,33 +2,28 @@ package com.asrajarshi.myapplication;
 
 import android.content.Context;
 import android.graphics.Color;
-import android.graphics.Typeface;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.util.Log;
+import android.view.Gravity;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.view.View;
 import android.widget.TableLayout;
 import android.widget.TableRow;
 import android.widget.TextView;
-import android.widget.Toast;
-
 import org.json.JSONException;
-
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
 public class Table extends AppCompatActivity {
     Context appContext;
+    private TextView recyclableTextView;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_table);
-        appContext = getBaseContext();
-        try {getTable(appContext);}
-        catch (IOException e) {e.printStackTrace();}
+        try {getTable();} catch (IOException e) {e.printStackTrace();}
     }
 
     @Override
@@ -44,62 +39,59 @@ public class Table extends AppCompatActivity {
         // automatically handle clicks on the Home/Up button, so long
         // as you specify a parent activity in AndroidManifest.xml.
         int id = item.getItemId();
-
         //noinspection SimplifiableIfStatement
         if (id == R.id.action_settings) {
             return true;
         }
-
         return super.onOptionsItemSelected(item);
     }
-    public void getTable(Context context) throws IOException {
-        TableLayout table = (TableLayout) findViewById(R.id.myTableLayout);
-        context = getBaseContext();
-        //To retrieve .json file from assets folder
-        GetAssets getFile = new GetAssets(context);
-        String bufferString = getFile.getFileAssets();
-        GetJson getJson1 = new GetJson(bufferString);
-        //create list of Arraylists where each arraylist contain onr column
-        List<ArrayList<String>> ab= new ArrayList<ArrayList<String>>();
+
+    public void getTable() throws IOException {
+        appContext = getBaseContext();
+        List<ArrayList<String>> TableList; // This Lsit will contain ArrayLists as columns
+        GetAssets getFile = new GetAssets(appContext);//To retrieve .json file from assets folder
+        String bufferString = getFile.getFileAssets();//To retrieve .json file from assets folder
+        GetJson getJson1 = new GetJson(bufferString);//Instance of getJson1 which will be used to parse json
         try {
-            ab = getJson1.getIt(); // get the List of ArrayLists
-            int nCol = ab.get(0).size(); //size of column
-            int nRow = ab.size(); //size of row
+            TableList = getJson1.getIt(); // get the List of ArrayLists
+            int nCol = TableList.get(0).size(); //size of column
+            int nRow = TableList.size(); //size of row
             ArrayList<String> key1 = getJson1.key; // get keys contained in object
-            //add headers to the table
-            TableRow headers = new TableRow(this);
-            for (int i = 0; i < nCol; i++) {
-                TextView[] text = new TextView[nCol];
-                text[i] = new TextView(Table.this);
-                text[i].setText(key1.get(i));
-                text[i].setPadding(10, 10, 10, 10);
-                text[i].setTypeface(null, Typeface.BOLD);
-                headers.addView(text[i]);
+            TableLayout header = (TableLayout) findViewById(R.id.scrollable_part); // This is for row header
+            TableRow row = new TableRow(this); // This is for row header
+            row.setGravity(Gravity.LEFT); // This is for row header
+            for (int j = 1; j < nCol; j++) {
+                row.addView(makeTableRowWithText(key1.get(j))); // This is for row header
             }
-            table.addView(headers);
-            //add rows to the table
+            header.addView(row); // This is for row header
+            //header (fixed horizontally)
+            TableLayout fixedColumn = (TableLayout) findViewById(R.id.fixed_column); // This is for fixed column
+            //rest of the table (within a scroll view)
+            TableLayout scrollablePart = (TableLayout) findViewById(R.id.scrollable_part);
+            TextView fixed = makeTableRowWithText(key1.get(0));// get 1st key which is header for fixed column
+            fixedColumn.addView(fixed);
             for (int i = 0; i < nRow; i++) {
-                TableRow row = new TableRow(this);
-                row.setClickable(true);
-                for(int j =0;j<nCol ; j++){
-                    TextView[] text = new TextView[nCol];
-                    text[j] = new TextView(Table.this);
-                    text[j].setText(ab.get(i).get(j));
-                    text[j].setPadding(10,10,10,10);
-                    row.addView(text[j]);
+                TextView fixedView = makeTableRowWithText(TableList.get(i).get(0));  // set fix column
+                fixedView.setBackgroundColor(Color.WHITE);
+                fixedColumn.addView(fixedView);
+                row = new TableRow(this);
+                row.setGravity(Gravity.LEFT);
+                row.setBackgroundColor(Color.WHITE);
+                for (int k = 1; k < nCol; k++) {// TODO need to return fixed column elements as the first element of each arraylist
+                    row.addView(makeTableRowWithText(TableList.get(i).get(k)));
                 }
-                table.addView(row);
-                row.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
-                        Log.d("mainacc", "hello rami");
-                        TableRow tablerow = (TableRow) v;
-                        TextView sample = (TextView) tablerow.getChildAt(0);
-                        String result=sample.getText().toString();
-                        Toast.makeText(Table.this, result, Toast.LENGTH_LONG).show();
-                    }});
-            } }catch (JSONException e) {
+                scrollablePart.addView(row);
+            }
+        } catch (JSONException e) {
             e.printStackTrace();
         }
+    }
+
+    public TextView makeTableRowWithText(String text) {
+        recyclableTextView = new TextView(this);
+        recyclableTextView.setText(text);
+        recyclableTextView.setTextSize(20);
+        recyclableTextView.setPadding(10, 10, 10, 10);
+        return recyclableTextView;
     }
 }
